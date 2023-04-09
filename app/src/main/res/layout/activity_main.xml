@@ -33,7 +33,11 @@
                 android:layout_height="250dp"
                 >
             </ImageView>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                >
+            </LinearLayout>
             <!--        四个按钮-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,14 +45,14 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 >
-                <Button
-                    android:id="@+id/btn_run_model"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="btn_run_model_click"
-                    android:text="识别"
-                    >
-                </Button>
+<!--                <Button-->
+<!--                    android:id="@+id/btn_run_model"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:onClick="btn_run_model_click"-->
+<!--                    android:text="识别"-->
+<!--                    >-->
+<!--                </Button>-->
                 <Button
                     android:id="@+id/btn_take_photo"
                     android:layout_width="wrap_content"
@@ -75,14 +79,7 @@
                 </Button>
             </LinearLayout>
 
-            <!--        识别结果-->
-            <EditText
-                android:id="@+id/tv_output_result"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="5"
-                >
-            </EditText>
+
         </LinearLayout>
 
 
@@ -98,8 +95,8 @@
                 android:id="@+id/btn_analyse"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="分析/搜索"
-                android:onClick="btn_search_click"
+                android:text="识别"
+                android:onClick="btn_run_model_click"
                 >
             </Button>
         </LinearLayout>

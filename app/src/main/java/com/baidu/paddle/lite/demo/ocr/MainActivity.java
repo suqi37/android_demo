@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 //    protected TextView tvInputSetting;
 //    protected TextView tvStatus;
     protected ImageView ivInputImage;
-    protected TextView tvOutputResult;
+//    protected TextView tvOutputResult;
 //    protected TextView tvInferenceTime;
 //    protected CheckBox cbOpencl;
 
@@ -105,10 +105,10 @@ public class MainActivity extends AppCompatActivity {
 //        tvStatus = findViewById(R.id.tv_model_img_status);
         ivInputImage = findViewById(R.id.iv_input_image);
 //        tvInferenceTime = findViewById(R.id.tv_inference_time);
-        tvOutputResult = findViewById(R.id.tv_output_result);
+//        tvOutputResult = findViewById(R.id.tv_output_result);
 
 //        tvInputSetting.setMovementMethod(ScrollingMovementMethod.getInstance());
-        tvOutputResult.setMovementMethod(ScrollingMovementMethod.getInstance());
+//        tvOutputResult.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         // Prepare the worker thread for mode loading and inference
         receiver = new Handler() {
@@ -270,12 +270,16 @@ public class MainActivity extends AppCompatActivity {
         if (outputImage != null) {
             ivInputImage.setImageBitmap(outputImage);
         }
-        tvOutputResult.setText(predictor.outputResult());
-        tvOutputResult.scrollTo(0, 0);
+//        tvOutputResult.setText(predictor.outputResult());
+//        tvOutputResult.scrollTo(0, 0);
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra("data", predictor.outputResult());
+        startActivity(intent);
     }
 
     public void onRunModelFailed() {
 //        tvStatus.setText("STATUS: run model failed");
+        Toast.makeText(getApplicationContext(),"识别失败!",Toast.LENGTH_SHORT);
     }
 
     public void set_img() {
@@ -467,13 +471,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void btn_search_click(View view){
-//        Toast.makeText(getApplicationContext(),"search clicked",Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        intent.putExtra("data", tvOutputResult.getText().toString());
-        startActivity(intent);
-
-    }
+//    public void btn_search_click(View view){
+////        Toast.makeText(getApplicationContext(),"search clicked",Toast.LENGTH_LONG).show();
+//        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//        intent.putExtra("data", tvOutputResult.getText().toString());
+//        startActivity(intent);
+//
+//    }
 
 
 

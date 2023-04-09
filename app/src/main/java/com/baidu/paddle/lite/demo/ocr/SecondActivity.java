@@ -2,16 +2,18 @@ package com.baidu.paddle.lite.demo.ocr;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
 
-    EditText searchText;
+    EditText editText;
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
 
@@ -20,11 +22,14 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        editText = findViewById(R.id.SecondEditText);
+//        获取intent传来的值
+        Intent intent = getIntent();
+        String extraData = intent.getStringExtra("data");
+        editText.setText(extraData);
 
-        //获取intent传来的值
-//        Intent intent = getIntent();
-//        String extraData = intent.getStringExtra("data");
-//        searchText.setText(extraData);
+
+
 
         dbHelper = new DatabaseHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();

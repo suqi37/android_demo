@@ -5,61 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="left"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
 
-        <TextView
-            android:id="@+id/search_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello" />
+        >
+        <EditText
+            android:id="@+id/emptyText"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+        </EditText>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="300dp"
+            android:layout_below="@id/emptyText"
             >
-            <Button
-                android:id="@+id/btn_back"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/SecondEditText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="返回"
-                android:onClick="btn_back_click"
+                android:background="#789000"
                 >
-            </Button>
-
-            <Button
-                android:id="@+id/btn_insert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="插入"
-                android:onClick="btn_insert_click"
-                >
-            </Button>
-
-            <Button
-                android:id="@+id/btn_query"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="查询"
-                android:onClick="btn_query_click"
-                >
-            </Button>
+            </EditText>
 
         </LinearLayout>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="5"
-            >
-        </EditText>
 
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="返回"
+                    android:onClick="btn_back_click"
+                    >
+                </Button>
+
+                <Button
+                    android:id="@+id/btn_insert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="插入"
+                    android:onClick="btn_insert_click"
+                    >
+                </Button>
+
+                <Button
+                    android:id="@+id/btn_query"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查询"
+                    android:onClick="btn_query_click"
+                    >
+                </Button>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
