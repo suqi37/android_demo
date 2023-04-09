@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="hello"
+                android:gravity="center"
+                >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/iv_input_image"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                >
+            </ImageView>
+
+            <!--        四个按钮-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <Button
+                    android:id="@+id/btn_run_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn_run_model_click"
+                    android:text="识别"
+                    >
+                </Button>
+                <Button
+                    android:id="@+id/btn_take_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn_take_photo_click"
+                    android:text="拍照"
+                    >
+                </Button>
+                <Button
+                    android:id="@+id/btn_choice_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn_choice_img_click"
+                    android:text="相册"
+                    >
+                </Button>
+                <Button
+                    android:id="@+id/btn_reset_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn_reset_img_click"
+                    android:text="清空"
+                    >
+                </Button>
+            </LinearLayout>
+
+            <!--        识别结果-->
+            <EditText
+                android:id="@+id/tv_output_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="5"
+                >
+            </EditText>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_centerHorizontal="true"
+            >
+
+            <Button
+                android:id="@+id/btn_analyse"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="分析/搜索"
+                android:onClick="btn_search_click"
+                >
+            </Button>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
