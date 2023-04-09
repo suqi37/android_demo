@@ -57,4 +57,8 @@ public class SecondActivity extends AppCompatActivity {
 //        Log.e(TAG, "btn_back_click: ok");
         finish();
     }
+
+    public void btn_test_click(View view) {
+        Log.e(TAG, MainActivity.inputText.getText().toString() );
+    }
 }

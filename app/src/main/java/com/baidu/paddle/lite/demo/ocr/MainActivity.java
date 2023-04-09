@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 //    protected TextView tvInputSetting;
 //    protected TextView tvStatus;
     protected ImageView ivInputImage;
+    public static EditText inputText;
 //    protected TextView tvOutputResult;
 //    protected TextView tvInferenceTime;
 //    protected CheckBox cbOpencl;
@@ -99,11 +101,13 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
         editor.apply();
 
+        ivInputImage = findViewById(R.id.iv_input_image);
+        inputText = findViewById(R.id.search_input_text);
+
         // Setup the UI components
 //        tvInputSetting = findViewById(R.id.tv_input_setting);
 //        cbOpencl = findViewById(R.id.cb_opencl);
 //        tvStatus = findViewById(R.id.tv_model_img_status);
-        ivInputImage = findViewById(R.id.iv_input_image);
 //        tvInferenceTime = findViewById(R.id.tv_inference_time);
 //        tvOutputResult = findViewById(R.id.tv_output_result);
 

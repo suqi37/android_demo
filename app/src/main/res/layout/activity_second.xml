@@ -74,6 +74,14 @@
                     >
                 </Button>
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="测试"
+                    android:onClick="btn_test_click"
+                    >
+                </Button>
+
             </LinearLayout>
 
 

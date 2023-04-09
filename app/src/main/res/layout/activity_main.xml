@@ -13,23 +13,47 @@
         >
 
         <LinearLayout
+            android:id="@+id/headLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            >
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/firstLayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="left"
+            android:layout_below="@+id/headLinearLayout"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/search_input_text"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                >
+            </EditText>
+            <Button
+                android:id="@+id/btn_search_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索"
+                >
+            </Button>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="600dp"
             android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:layout_below="@id/firstLayout"
             >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="hello"
-                android:gravity="center"
-                >
-            </TextView>
 
             <ImageView
                 android:id="@+id/iv_input_image"
-                android:layout_width="300dp"
+                android:layout_width="260dp"
                 android:layout_height="250dp"
                 >
             </ImageView>
@@ -87,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="50dp"
             android:layout_centerHorizontal="true"
             >
 
