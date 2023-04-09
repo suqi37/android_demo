@@ -16,7 +16,7 @@ public class SecondActivity extends AppCompatActivity {
     EditText editText;
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
-
+    String TAG = "suqi";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,31 +28,25 @@ public class SecondActivity extends AppCompatActivity {
         String extraData = intent.getStringExtra("data");
         editText.setText(extraData);
 
-
-
-
         dbHelper = new DatabaseHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
 
 
     }
     public void btn_insert_click(View view) {
-        db.execSQL("INSERT INTO students (id,name, age) VALUES (3,'jack', 33)");
-        Log.e("suqi", "btn_insert_click: OK");
+        db.execSQL("INSERT INTO dataTable (name,description) VALUES ('白砂糖', '糖类,为人体提供日常活动所需的营养物质')");
+
     }
 
     public void btn_query_click(View view) {
-        Log.e("suqi", "btn_query_click: ok");
-        Cursor cursor = db.query("students", null, null, null, null, null, null);
+        Cursor cursor = db.query("dataTable", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
-                int id = cursor.getInt(cursor.getColumnIndex("id"));
                 String name = cursor.getString(cursor.getColumnIndex("name"));
-                int age = cursor.getInt(cursor.getColumnIndex("age"));
+                String description = cursor.getString(cursor.getColumnIndex("description"));
                 // 处理查询结果...
-                Log.e("suqi",String.valueOf(id));
-                Log.e("suqi",name);
-                Log.e("suqi",String.valueOf(age));
+                Log.e(TAG,name);
+                Log.e(TAG,description);
 
             } while (cursor.moveToNext());
         }
@@ -60,7 +54,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void btn_back_click(View view) {
-        Log.e("suqi", "btn_back_click: ok");
+//        Log.e(TAG, "btn_back_click: ok");
         finish();
     }
 }
