@@ -1,10 +1,14 @@
 package com.baidu.paddle.lite.demo.ocr;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.Environment;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.io.*;
 
@@ -156,4 +160,13 @@ public class Utils {
             return null;
         }
     }
+
+    public static void setWindowWhite(Activity activity){
+        //设置状态栏颜色
+        Window window = activity.getWindow();
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//状态栏颜色（6.0以上才可以）
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(activity.getResources().getColor(R.color.white));
+    }
+
 }

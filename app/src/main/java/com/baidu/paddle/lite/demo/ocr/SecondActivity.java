@@ -33,7 +33,7 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        Utils.setWindowWhite(this);
         setContentView(R.layout.activity_second);
         editText = findViewById(R.id.SecondEditText);
         resultDataList = new ArrayList<ResultData>();
@@ -77,7 +77,6 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
 //            Log.e(TAG, "btn_query_click: "+resultData.description);
 //        }
     }
-
 
     @Override
     public void onDataReceived(List<ResultData> resultDataList) {

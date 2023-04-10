@@ -15,6 +15,7 @@ import android.media.ExifInterface;
 import android.content.res.AssetManager;
 import android.media.FaceDetector;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -29,6 +30,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -101,20 +103,12 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
         editor.apply();
 
+        Utils.setWindowWhite(this);
+
         ivInputImage = findViewById(R.id.iv_input_image);
         inputText = findViewById(R.id.search_input_text);
 
-        // Setup the UI components
-//        tvInputSetting = findViewById(R.id.tv_input_setting);
-//        cbOpencl = findViewById(R.id.cb_opencl);
-//        tvStatus = findViewById(R.id.tv_model_img_status);
-//        tvInferenceTime = findViewById(R.id.tv_inference_time);
-//        tvOutputResult = findViewById(R.id.tv_output_result);
 
-//        tvInputSetting.setMovementMethod(ScrollingMovementMethod.getInstance());
-//        tvOutputResult.setMovementMethod(ScrollingMovementMethod.getInstance());
-
-        // Prepare the worker thread for mode loading and inference
         receiver = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -475,13 +469,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    public void btn_search_click(View view){
-////        Toast.makeText(getApplicationContext(),"search clicked",Toast.LENGTH_LONG).show();
-//        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+    public void btn_first_search_click(View view){
+//        Toast.makeText(getApplicationContext(),"search clicked",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(MainActivity.this, ShowResultActivity.class);
 //        intent.putExtra("data", tvOutputResult.getText().toString());
-//        startActivity(intent);
-//
-//    }
+        startActivity(intent);
+
+    }
 
 
 

@@ -15,17 +15,18 @@
             android:layout_height="50dp"
             >
         </RelativeLayout>
-        <ListView
+<!--        <ListView-->
+<!--            android:id="@+id/listView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="500dp"-->
+<!--            android:layout_below="@id/showResultFirstLayout"-->
+<!--            >-->
+<!--        </ListView>-->
+        <ExpandableListView
+            android:id="@+id/expandableListView"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:layout_below="@id/showResultFirstLayout"
-            >
-        </ListView>
-
-
-
-
-
-
+            android:layout_below="@id/showResultFirstLayout">
+        </ExpandableListView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
