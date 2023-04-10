@@ -13,6 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".SearchService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".SecondActivity"
             android:exported="false">
@@ -20,7 +26,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +37,7 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="Settings"></activity>
+            android:label="Settings" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
