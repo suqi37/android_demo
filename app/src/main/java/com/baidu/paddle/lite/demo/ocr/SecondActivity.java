@@ -27,7 +27,6 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
     String TAG = "suqi";
     List<ResultData> resultDataList;
 
-
     private SearchService mService;
 
     @Override
@@ -47,17 +46,15 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
 ////        获取intent传来的值
 //        Intent intent = getIntent();
 //        String extraData = intent.getStringExtra("data");
-//        editText.setText(extraData);
-
-//        dbHelper = new DatabaseHelper(getApplicationContext());
-//        db = dbHelper.getWritableDatabase();
 
 
     }
+
     public void btn_insert_click(View view) {
         db.execSQL("INSERT INTO dataTable (name,description) VALUES ('白砂糖', '糖类,为人体提供日常活动所需的营养物质')");
 
     }
+
     public void btn_back_click(View view) {
 //        Log.e(TAG, "btn_back_click: ok");
         finish();
@@ -69,8 +66,13 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
 
 
     public void btn_query_click(View view) {
-        mService.sendDataToActivity(resultDataList);
+        resultDataList =  mService.getUsers();
+        for(ResultData resultData: resultDataList){
+            Log.e(TAG, "btn_query_click: "+resultData. name);
+            Log.e(TAG, "btn_query_click: "+resultData.description);
+        }
 
+//        mService.sendDataToActivity(resultDataList);
         //不使用服务查询
 //        Cursor cursor = db.query("dataTable", null, null, null, null, null, null);
 //        if (cursor.moveToFirst()) {
@@ -88,15 +90,10 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
     }
 
 
-
     @Override
-    public void onDataReceived(List<ResultData> resultDataList) {
-        for(ResultData resultData: resultDataList){
-            Log.e(TAG, resultData. name);
-            Log.e(TAG, resultData.description);
-        }
+    public void onDataReceived(String s) {
+        Log.e(TAG, "onDataReceived: "+s);
     }
-
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
@@ -105,21 +102,19 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
             // 获取 MyService 实例
             SearchService.MyBinder binder = (SearchService.MyBinder) service;
             mService = binder.getService();
-
-            resultDataList = binder.getUsers();
-            for(ResultData resultData: resultDataList){
-                Log.e(TAG, "onServiceConnected: "+ resultData.name);
-                Log.e(TAG, "onServiceConnected: "+ resultData.description);
-            }
             // 注册回调接口
             mService.registerCallback(SecondActivity.this);
+//            resultDataList = binder.getUsers();
+//            for(ResultData resultData: resultDataList){
+//                Log.e(TAG, "onServiceConnected: "+ resultData.name);
+//                Log.e(TAG, "onServiceConnected: "+ resultData.description);
+//            }
         }
         @Override
         public void onServiceDisconnected(ComponentName name) {
             mService = null;
         }
     };
-
 
     @Override
     protected void onDestroy() {

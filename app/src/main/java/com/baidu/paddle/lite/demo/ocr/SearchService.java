@@ -17,14 +17,16 @@ public class SearchService extends Service {
 
     // 声明 MyBinder 内部类
     public class MyBinder extends Binder {
-        public List<ResultData> getUsers() {
-            return mHelper.getAllData();
-        }
         public SearchService getService(){
             return SearchService.this;
         }
     }
 
+    public List<ResultData> getUsers() {
+        sendDataToActivity("call back");
+        return mHelper.getAllData();
+
+    }
 
     public SearchService() {
     }
@@ -37,7 +39,6 @@ public class SearchService extends Service {
     }
 
 
-
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
@@ -46,15 +47,13 @@ public class SearchService extends Service {
 
     // 定义回调接口
     public interface Callback {
-        void onDataReceived(List<ResultData> resultDataList);
+        void onDataReceived(String s);
     }
 
-
-
     // 在需要传递数据的时候调用此方法
-    public void sendDataToActivity(List<ResultData> resultDataList) {
+    public void sendDataToActivity(String s) {
         if (mCallback != null) {
-            mCallback.onDataReceived(resultDataList);
+            mCallback.onDataReceived(s);
         }
     }
 
