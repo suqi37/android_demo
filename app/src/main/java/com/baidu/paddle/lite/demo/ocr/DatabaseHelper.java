@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +35,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             resultDataList.add(resultData);
         }
         cursor.close();
+
+//        try {
+//            Thread.sleep(20000);
+//        }catch (Exception e){
+//
+//        }
+
         return resultDataList;
     }
 
+    public List<ResultData> getByName(String[] selectionArgs) {
+        SQLiteDatabase db = getReadableDatabase();
+        List<ResultData> resultDataList = new ArrayList<>();
+        int n = selectionArgs.length;
+
+        String join = "?";
+        for(int i=1;i<n;i++){
+            join = join + ",?";
+        }
+
+        String query = "SELECT * FROM dataTable WHERE name IN (" + join + ")";
+
+        Log.e("suqi", "query: "+query);
+        Cursor cursor = db.rawQuery(query, selectionArgs);
+
+//        Cursor cursor = db.rawQuery("SELECT * FROM " + "dataTable", null);
+        while (cursor.moveToNext()) {
+            ResultData resultData = new ResultData();
+            resultData.name = cursor.getString(cursor.getColumnIndex("name"));
+            resultData.description = cursor.getString(cursor.getColumnIndex("description"));
+            resultDataList.add(resultData);
+        }
+        cursor.close();
+//        try {
+//            Thread.sleep(20000);
+//        }catch (Exception e){
+//        }
+        return resultDataList;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

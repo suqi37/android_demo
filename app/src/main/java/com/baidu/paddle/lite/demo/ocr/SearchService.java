@@ -23,10 +23,14 @@ public class SearchService extends Service {
     }
 
     public List<ResultData> getUsers() {
-        sendDataToActivity("call back");
         return mHelper.getAllData();
-
     }
+
+    public void getByName(String inputString) {
+        String[] selectionArgs = inputString.split(" ");
+        sendDataToActivity(mHelper.getByName(selectionArgs));
+    }
+
 
     public SearchService() {
     }
@@ -47,13 +51,13 @@ public class SearchService extends Service {
 
     // 定义回调接口
     public interface Callback {
-        void onDataReceived(String s);
+        void onDataReceived(List<ResultData> resultDataList);
     }
 
     // 在需要传递数据的时候调用此方法
-    public void sendDataToActivity(String s) {
+    public void sendDataToActivity(List<ResultData> resultDataList) {
         if (mCallback != null) {
-            mCallback.onDataReceived(s);
+            mCallback.onDataReceived(resultDataList);
         }
     }
 

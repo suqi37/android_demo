@@ -60,41 +60,36 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
         finish();
     }
 
-    public void btn_test_click(View view) {
-        Log.e(TAG, MainActivity.inputText.getText().toString() );
+    public void btn_searchName_click(View view) {
+        Log.e(TAG, "btn_searchName_click: "+editText.getText().toString());
+        mService.getByName(editText.getText().toString());
+//        for(ResultData resultData: resultDataList){
+//            Log.e(TAG, "btn_query_click: "+resultData. name);
+//            Log.e(TAG, "btn_query_click: "+resultData.description);
+//        }
     }
 
 
     public void btn_query_click(View view) {
         resultDataList =  mService.getUsers();
-        for(ResultData resultData: resultDataList){
-            Log.e(TAG, "btn_query_click: "+resultData. name);
-            Log.e(TAG, "btn_query_click: "+resultData.description);
-        }
-
-//        mService.sendDataToActivity(resultDataList);
-        //不使用服务查询
-//        Cursor cursor = db.query("dataTable", null, null, null, null, null, null);
-//        if (cursor.moveToFirst()) {
-//            do {
-//                String name = cursor.getString(cursor.getColumnIndex("name"));
-//                String description = cursor.getString(cursor.getColumnIndex("description"));
-//                // 处理查询结果...
-//                Log.e(TAG,name);
-//                Log.e(TAG,description);
-//
-//            } while (cursor.moveToNext());
+//        for(ResultData resultData: resultDataList){
+//            Log.e(TAG, "btn_query_click: "+resultData. name);
+//            Log.e(TAG, "btn_query_click: "+resultData.description);
 //        }
-//        cursor.close();
-//
     }
 
 
     @Override
-    public void onDataReceived(String s) {
-        Log.e(TAG, "onDataReceived: "+s);
+    public void onDataReceived(List<ResultData> resultDataList) {
+        for(ResultData resultData: resultDataList){
+            Log.e(TAG, "onDataReceived: "+resultData. name);
+            Log.e(TAG, "onDataReceived: "+resultData.description);
+        }
     }
-
+//    @Override
+//    public void onDataReceived(String s) {
+//        Log.e(TAG, "onDataReceived: "+s);
+//    }
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -104,11 +99,6 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
             mService = binder.getService();
             // 注册回调接口
             mService.registerCallback(SecondActivity.this);
-//            resultDataList = binder.getUsers();
-//            for(ResultData resultData: resultDataList){
-//                Log.e(TAG, "onServiceConnected: "+ resultData.name);
-//                Log.e(TAG, "onServiceConnected: "+ resultData.description);
-//            }
         }
         @Override
         public void onServiceDisconnected(ComponentName name) {

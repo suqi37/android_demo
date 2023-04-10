@@ -340,47 +340,5 @@
     "message": "{\"cookie\":\"\",\"inReplyTo\":\"configure\",\"message\":\"CMake Error at CMakeLists.txt:18 (find_package):\\n  Found package configuration file:\\n\\n    D:/Project/android/android_demo/app/src/main/cpp/../../../OpenCV/sdk/native/jni/OpenCVConfig.cmake\\n\\n  but it set OpenCV_FOUND to FALSE so package \\\"OpenCV\\\" is considered to be\\n  NOT FOUND.\\n\\n\",\"title\":\"Error\",\"type\":\"message\"}\n",
     "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
     "tag": "debug|x86"
-  },
-  {
-    "level": "ERROR",
-    "message": "CMake Error at D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt:18 (find_package):\r\n  Found package configuration file:\r\n\r\n    D:/Project/android/android_demo/app/src/main/cpp/../../../OpenCV/sdk/native/jni/OpenCVConfig.cmake\r\n\r\n  but it set OpenCV_FOUND to FALSE so package \"OpenCV\" is considered to be\r\n  NOT FOUND.\r\n",
-    "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "{\"cookie\":\"\",\"inReplyTo\":\"configure\",\"progressCurrent\":1000,\"progressMaximum\":1000,\"progressMessage\":\"Configuring\",\"progressMinimum\":0,\"type\":\"progress\"}\n",
-    "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "{\"cookie\":\"\",\"inReplyTo\":\"configure\",\"message\":\"Configuring incomplete, errors occurred!\\nSee also \\\"D:/Project/android/android_demo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeOutput.log\\\".\",\"type\":\"message\"}\n",
-    "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "Configuring incomplete, errors occurred!\r\nSee also \"D:/Project/android/android_demo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeOutput.log\".",
-    "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "{\"cookie\":\"\",\"errorMessage\":\"Configuration failed.\",\"inReplyTo\":\"configure\",\"type\":\"error\"}\n",
-    "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "ERROR",
-    "message": "Configuration failed.",
-    "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "tag": "debug|x86"
-  },
-  {
-    "level": "INFO",
-    "message": "JSON generation completed with problem. Exception: com.android.ide.common.process.ProcessException: Error configuring CMake server (D:\\AppData\\androidSdk\\cmake\\3.10.2.4988404\\bin).\r\nCheck for working C compiler: D:/AppData/androidSdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe\nCheck for working C compiler: D:/AppData/androidSdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe -- works\nDetecting C compiler ABI info\nDetecting C compiler ABI info - done\nDetecting C compile features\nDetecting C compile features - done\nCheck for working CXX compiler: D:/AppData/androidSdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe\nCheck for working CXX compiler: D:/AppData/androidSdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe -- works\nDetecting CXX compiler ABI info\nDetecting CXX compiler ABI info - done\nDetecting CXX compile features\nDetecting CXX compile features - done\nopencv dir: D:/Project/android/android_demo/app/src/main/cpp/../../../OpenCV/sdk/native/jni\nCMake Warning at D:/Project/android/android_demo/app/OpenCV/sdk/native/jni/OpenCVConfig.cmake:47 (message):\n  Found OpenCV Android Pack but it has no binaries compatible with your ABI\n  (can\u0027t find: /abi-x86)\nCall Stack (most recent call first):\n  CMakeLists.txt:18 (find_package)\n\n\nCMake Error at CMakeLists.txt:18 (find_package):\n  Found package configuration file:\n\n    D:/Project/android/android_demo/app/src/main/cpp/../../../OpenCV/sdk/native/jni/OpenCVConfig.cmake\n\n  but it set OpenCV_FOUND to FALSE so package \"OpenCV\" is considered to be\n  NOT FOUND.\n\n\nConfiguring incomplete, errors occurred!\nSee also \"D:/Project/android/android_demo/app/.cxx/cmake/debug/x86/CMakeFiles/CMakeOutput.log\".\n",
-    "file": "D:\\Project\\android\\android_demo\\app\\src\\main\\cpp\\CMakeLists.txt",
-    "tag": "debug|x86"
   }
 ]
