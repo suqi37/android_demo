@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -51,32 +52,33 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = "suqi";
     public static final int OPEN_GALLERY_REQUEST_CODE = 0;
     public static final int TAKE_PHOTO_REQUEST_CODE = 1;
 
     public static final int REQUEST_LOAD_MODEL = 0;
     public static final int REQUEST_RUN_MODEL = 1;
+    public static final int REQUEST_SEARCH = 2;
+
     public static final int RESPONSE_LOAD_MODEL_SUCCESSED = 0;
     public static final int RESPONSE_LOAD_MODEL_FAILED = 1;
     public static final int RESPONSE_RUN_MODEL_SUCCESSED = 2;
     public static final int RESPONSE_RUN_MODEL_FAILED = 3;
+    public static final int RESPONSE_SEARCH_SUCCESSED = 4;
+    public static final int RESPONSE_SEARCH_FAILED = 5;
 
     protected ProgressDialog pbLoadModel = null;
     protected ProgressDialog pbRunModel = null;
+    protected ProgressDialog pbSearchData = null;
+
 
     protected Handler receiver = null; // Receive messages from worker thread
     protected Handler sender = null; // Send command to worker thread
-    protected HandlerThread worker = null; // Worker thread to load&run model
+    protected HandlerThread worker = null; // Worker thread to load&run model&search
 
-    // UI components of object detection
-//    protected TextView tvInputSetting;
-//    protected TextView tvStatus;
+
     protected ImageView ivInputImage;
     public static EditText inputText;
-//    protected TextView tvOutputResult;
-//    protected TextView tvInferenceTime;
-//    protected CheckBox cbOpencl;
 
     // Model settings of ocr
     protected String modelPath = "";
@@ -89,7 +91,11 @@ public class MainActivity extends AppCompatActivity {
     private String currentPhotoPath;
     private AssetManager assetManager = null;
 
+
     protected Predictor predictor = new Predictor();
+    DatabaseHelper dbHelper;
+    SQLiteDatabase db;
+
 
     private Bitmap cur_predict_image = null;
 
@@ -102,8 +108,12 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-
+        Log.e(TAG, "onCreate: ");
         Utils.setWindowWhite(this);
+
+        dbHelper = new DatabaseHelper(MainActivity.this);
+        db = dbHelper.getWritableDatabase();
+
 
         ivInputImage = findViewById(R.id.iv_input_image);
         inputText = findViewById(R.id.search_input_text);
@@ -139,6 +149,20 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Run model failed!", Toast.LENGTH_SHORT).show();
                         onRunModelFailed();
                         break;
+                    case RESPONSE_SEARCH_SUCCESSED:
+                        if (pbSearchData != null && pbSearchData.isShowing()) {
+                            pbSearchData.dismiss();
+                        }
+                        Toast.makeText(MainActivity.this, "查询成功!!!", Toast.LENGTH_SHORT).show();
+                        onSearchSuccessed();
+                        break;
+                    case RESPONSE_SEARCH_FAILED:
+                        if (pbSearchData != null && pbSearchData.isShowing()) {
+                            pbSearchData.dismiss();
+                        }
+                        Toast.makeText(MainActivity.this, "查询失败!!!", Toast.LENGTH_SHORT).show();
+                        onSearchFailed();
+                        break;
                     default:
                         break;
                 }
@@ -147,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
         worker = new HandlerThread("Predictor Worker");
         worker.start();
+
         sender = new Handler(worker.getLooper()) {
             public void handleMessage(Message msg) {
                 switch (msg.what) {
@@ -166,11 +191,24 @@ public class MainActivity extends AppCompatActivity {
                             receiver.sendEmptyMessage(RESPONSE_RUN_MODEL_FAILED);
                         }
                         break;
+                    case REQUEST_SEARCH:
+                        // Run model if model is loaded
+                        if (onSearchModel()) {
+                            receiver.sendEmptyMessage(RESPONSE_SEARCH_SUCCESSED);
+                        } else {
+                            receiver.sendEmptyMessage(RESPONSE_SEARCH_FAILED);
+                        }
+                        break;
                     default:
                         break;
                 }
             }
         };
+
+
+
+
+
     }
 
     @Override
@@ -227,10 +265,7 @@ public class MainActivity extends AppCompatActivity {
         sender.sendEmptyMessage(REQUEST_LOAD_MODEL);
     }
 
-    public void runModel() {
-        pbRunModel = ProgressDialog.show(this, "", "running model...", false, false);
-        sender.sendEmptyMessage(REQUEST_RUN_MODEL);
-    }
+
 
     public boolean onLoadModel() {
         if (predictor.isLoaded()) {
@@ -335,6 +370,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        if (predictor != null) {
+            predictor.releaseModel();
+        }
+        worker.quit();
+        super.onDestroy();
+    }
+
     private boolean requestAllPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
@@ -396,6 +440,17 @@ public class MainActivity extends AppCompatActivity {
         return image;
     }
 
+    public void btn_choice_img_click(View view) {
+        if (requestAllPermissions()) {
+            openGallery();
+        }
+    }
+
+    public void btn_take_photo_click(View view) {
+        if (requestAllPermissions()) {
+            takePhoto();
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -451,17 +506,10 @@ public class MainActivity extends AppCompatActivity {
         ivInputImage.setImageBitmap(cur_predict_image);
     }
 
-//    public void cb_opencl_click(View view) {
-////        tvStatus.setText("STATUS: load model ......");
-//        loadModel();
-//    }
-
     public void btn_run_model_click(View view) {
         Bitmap image = ((BitmapDrawable) ivInputImage.getDrawable()).getBitmap();
         if (image == null) {
-//            tvStatus.setText("STATUS: image is not exists");
         } else if (!predictor.isLoaded()) {
-//            tvStatus.setText("STATUS: model is not loaded");
         } else {
 //            tvStatus.setText("STATUS: run model ...... ");
             predictor.setInputImage(image);
@@ -469,35 +517,43 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void runModel() {
+        pbRunModel = ProgressDialog.show(this, "", "running model...", false, false);
+        sender.sendEmptyMessage(REQUEST_RUN_MODEL);
+    }
+
+
     public void btn_first_search_click(View view){
-//        Toast.makeText(getApplicationContext(),"search clicked",Toast.LENGTH_LONG).show();
+        pbSearchData = ProgressDialog.show(this, "", "正在查询......", false, false);
+        sender.sendEmptyMessage(REQUEST_SEARCH);
+
+    }
+
+    //查询操作
+    public boolean onSearchModel() {
+        if(inputText.getText().toString().isEmpty()) {
+            return false;
+        }else{
+
+//            dbHelper.getByName()
+
+
+
+            try {
+                Thread.sleep(2000);
+            }catch (Exception e){
+            }
+            return true;
+        }
+    }
+
+    public void onSearchSuccessed() {
         Intent intent = new Intent(MainActivity.this, ShowResultActivity.class);
-//        intent.putExtra("data", tvOutputResult.getText().toString());
         startActivity(intent);
-
     }
 
-
-
-    public void btn_choice_img_click(View view) {
-        if (requestAllPermissions()) {
-            openGallery();
-        }
+    public void onSearchFailed() {
     }
 
-    public void btn_take_photo_click(View view) {
-        if (requestAllPermissions()) {
-            takePhoto();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        if (predictor != null) {
-            predictor.releaseModel();
-        }
-        worker.quit();
-        super.onDestroy();
-    }
 
 }

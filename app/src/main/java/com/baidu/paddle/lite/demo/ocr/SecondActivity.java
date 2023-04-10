@@ -85,10 +85,7 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
             Log.e(TAG, "onDataReceived: "+resultData.description);
         }
     }
-//    @Override
-//    public void onDataReceived(String s) {
-//        Log.e(TAG, "onDataReceived: "+s);
-//    }
+
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {

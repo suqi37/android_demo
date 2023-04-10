@@ -25,9 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<ResultData> getAllData() {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + "dataTable", null);
-
         List<ResultData> resultDataList = new ArrayList<>();
-
         while (cursor.moveToNext()) {
             ResultData resultData = new ResultData();
             resultData.name = cursor.getString(cursor.getColumnIndex("name"));
@@ -35,32 +33,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             resultDataList.add(resultData);
         }
         cursor.close();
-
 //        try {
 //            Thread.sleep(20000);
 //        }catch (Exception e){
 //
 //        }
-
         return resultDataList;
     }
+
 
     public List<ResultData> getByName(String[] selectionArgs) {
         SQLiteDatabase db = getReadableDatabase();
         List<ResultData> resultDataList = new ArrayList<>();
         int n = selectionArgs.length;
-
         String join = "?";
         for(int i=1;i<n;i++){
             join = join + ",?";
         }
-
         String query = "SELECT * FROM dataTable WHERE name IN (" + join + ")";
-
-        Log.e("suqi", "query: "+query);
         Cursor cursor = db.rawQuery(query, selectionArgs);
-
-//        Cursor cursor = db.rawQuery("SELECT * FROM " + "dataTable", null);
         while (cursor.moveToNext()) {
             ResultData resultData = new ResultData();
             resultData.name = cursor.getString(cursor.getColumnIndex("name"));
