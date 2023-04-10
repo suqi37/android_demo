@@ -27,7 +27,7 @@ public class SearchService extends Service {
     }
 
     public void getByName(String inputString) {
-        String[] selectionArgs = inputString.split(" ");
+        String[] selectionArgs = inputString.replaceAll("\\r|\\n", "").split("、");
         sendDataToActivity(mHelper.getByName(selectionArgs));
     }
 

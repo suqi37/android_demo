@@ -38,14 +38,17 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
         editText = findViewById(R.id.SecondEditText);
         resultDataList = new ArrayList<ResultData>();
 
+        //        获取intent传来的值
+        Intent lastIntent = getIntent();
+        editText.setText(lastIntent.getStringExtra("data"));
+
+
         Intent intent = new Intent(this, SearchService.class);
         startService(intent);
         // 绑定 service
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
-////        获取intent传来的值
-//        Intent intent = getIntent();
-//        String extraData = intent.getStringExtra("data");
+
 
 
     }
@@ -80,10 +83,13 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
 
     @Override
     public void onDataReceived(List<ResultData> resultDataList) {
-        for(ResultData resultData: resultDataList){
-            Log.e(TAG, "onDataReceived: "+resultData. name);
-            Log.e(TAG, "onDataReceived: "+resultData.description);
-        }
+        MainActivity.list = resultDataList;
+        Intent intent = new Intent(SecondActivity.this, ShowResultActivity.class);
+        startActivity(intent);
+//        for(ResultData resultData: resultDataList){
+//            Log.e(TAG, "onDataReceived: "+resultData. name);
+//            Log.e(TAG, "onDataReceived: "+resultData.description);
+//        }
     }
 
     private ServiceConnection mConnection = new ServiceConnection() {
