@@ -9,10 +9,14 @@ import android.widget.TextView;
 public class MyAdapter extends BaseExpandableListAdapter {
 
     // 定义一些数据用于填充ExpandableListView
-    private String[] groups = { "白砂糖", "Group 2", "Group 3" };
-    private String[][] children = { {"在上述代码中，我们通过findViewById()方法获取了我们的TextView，并使用setTextSize()方法设置了它的字体大小。其中，使用了COMPLEX_UNIT_SP表示字体大小的单位是sp，20表示字体大小为20sp。"}, { "Child 3", "Child 4", "Child 5" }, { "Child 6" } };
+    private String[] groups = {""};
+    private String[][] children = { {""} };
 
     public MyAdapter() {
+        ResultData resultData = MainActivity.list.get(0);
+        groups[0] = resultData.name;
+        children[0][0] = resultData.description;
+
     }
 
     public MyAdapter(String s) {

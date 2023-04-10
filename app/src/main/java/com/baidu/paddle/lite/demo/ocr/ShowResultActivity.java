@@ -10,8 +10,6 @@ import android.widget.ListView;
 
 public class ShowResultActivity extends AppCompatActivity {
 
-    String[] data = {"1232433","124123","1224423","12223","14223","123423","14223","123423","12323","12653"};
-    ListView listView;
 
 
     @Override
@@ -23,7 +21,7 @@ public class ShowResultActivity extends AppCompatActivity {
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, data);
 //        listView.setAdapter(adapter);
         ExpandableListView expandableListView = findViewById(R.id.expandableListView);
-        MyAdapter adapter = new MyAdapter("1231");
+        MyAdapter adapter = new MyAdapter();
         expandableListView.setAdapter(adapter);
 
 

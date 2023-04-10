@@ -49,7 +49,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "suqi";
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     protected Predictor predictor = new Predictor();
     DatabaseHelper dbHelper;
     SQLiteDatabase db;
-
+    public static List<ResultData> list;
 
     private Bitmap cur_predict_image = null;
 
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(MainActivity.this);
         db = dbHelper.getWritableDatabase();
-
+        list = new ArrayList<ResultData>();
 
         ivInputImage = findViewById(R.id.iv_input_image);
         inputText = findViewById(R.id.search_input_text);
@@ -534,11 +536,7 @@ public class MainActivity extends AppCompatActivity {
         if(inputText.getText().toString().isEmpty()) {
             return false;
         }else{
-
-//            dbHelper.getByName()
-
-
-
+            list = dbHelper.getByName(inputText.getText().toString().split("、"));
             try {
                 Thread.sleep(2000);
             }catch (Exception e){
