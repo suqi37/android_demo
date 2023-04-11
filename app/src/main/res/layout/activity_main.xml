@@ -71,22 +71,32 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
-
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_take_photo"
-                    android:layout_width="62dp"
-                    android:layout_height="44dp"
-                    android:background="@drawable/camera"
-                    android:onClick="btn_take_photo_click"></Button>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="拍照"
+                    android:textColor="@color/white"
+                    app:rippleColor="@color/colorAccent"
+                    android:onClick="btn_take_photo_click"
+                    >
+                </com.google.android.material.button.MaterialButton>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_choice_img"
-                    android:layout_width="66dp"
-                    android:layout_height="55dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="相册"
+                    android:textColor="@color/white"
+                    app:rippleColor="@color/colorAccent"
                     android:layout_marginLeft="50dp"
                     android:layout_toRightOf="@id/btn_take_photo"
-                    android:background="@drawable/photo"
-                    android:onClick="btn_choice_img_click"></Button>
+                    android:onClick="btn_choice_img_click"
+                    >
+                </com.google.android.material.button.MaterialButton>
+
+
+
             </RelativeLayout>
 
 
@@ -100,15 +110,17 @@
             android:layout_marginBottom="150dp"
             android:layout_centerHorizontal="true"
             >
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_analyse"
-                android:layout_width="90dp"
-                android:layout_height="80dp"
-                android:background="@drawable/ocr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="识别"
+                android:textColor="@color/white"
+                app:rippleColor="@color/colorAccent"
                 android:onClick="btn_run_model_click"
                 >
-            </Button>
+            </com.google.android.material.button.MaterialButton>
+
 
 
 
@@ -119,3 +131,27 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--                <Button-->
+    <!--                    android:id="@+id/btn_take_photo"-->
+    <!--                    android:layout_width="62dp"-->
+    <!--                    android:layout_height="44dp"-->
+    <!--                    android:background="@drawable/camera"-->
+    <!--                    android:onClick="btn_take_photo_click"></Button>-->
+    <!--                <Button-->
+    <!--                    android:id="@+id/btn_choice_img"-->
+    <!--                    android:layout_width="66dp"-->
+    <!--                    android:layout_height="55dp"-->
+    <!--                    android:layout_marginLeft="50dp"-->
+    <!--                    android:layout_toRightOf="@id/btn_take_photo"-->
+    <!--                    android:background="@drawable/photo"-->
+    <!--                    android:onClick="btn_choice_img_click"></Button>-->
+
+    <!--            <Button-->
+    <!--                android:id="@+id/btn_analyse"-->
+    <!--                android:layout_width="90dp"-->
+    <!--                android:layout_height="80dp"-->
+    <!--                android:background="@drawable/ocr"-->
+    <!--                android:onClick="btn_run_model_click"-->
+    <!--                >-->
+    <!--            </Button>-->

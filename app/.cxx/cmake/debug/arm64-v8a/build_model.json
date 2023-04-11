@@ -187,7 +187,6 @@
       "project": {
         "compilerSettingsCacheFolder": "D:\\Project\\android\\android_demo\\.cxx",
         "cxxFolder": "D:\\Project\\android\\android_demo\\.cxx",
-        "ideBuildTargetAbi": "arm64-v8a,armeabi-v7a,armeabi",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
@@ -211,7 +210,10 @@
     "objFolder": "D:\\Project\\android\\android_demo\\app\\build\\intermediates\\cmake\\debug\\obj",
     "variantName": "debug",
     "validAbiList": [
-      "ARM64_V8A"
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
     ],
     "prefabDirectory": "D:\\Project\\android\\android_demo\\app\\.cxx\\cmake\\debug\\prefab",
     "prefabPackageDirectoryList": []
