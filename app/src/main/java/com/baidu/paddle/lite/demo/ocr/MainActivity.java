@@ -533,14 +533,21 @@ public class MainActivity extends AppCompatActivity {
 
     //查询操作
     public boolean onSearchModel() {
-        if(inputText.getText().toString().isEmpty()) {
+        try {
+            Thread.sleep(1000);
+        }catch (Exception e){
+
+        }
+        list.clear();
+        try {
+            list = dbHelper.getByName(inputText.getText().toString().split("、"));
+        }catch (Exception e){
+            return false;
+        }
+
+        if(list.isEmpty()){
             return false;
         }else{
-            list = dbHelper.getByName(inputText.getText().toString().split("、"));
-            try {
-                Thread.sleep(2000);
-            }catch (Exception e){
-            }
             return true;
         }
     }

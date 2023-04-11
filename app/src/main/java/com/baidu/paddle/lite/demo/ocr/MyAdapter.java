@@ -9,18 +9,18 @@ import android.widget.TextView;
 public class MyAdapter extends BaseExpandableListAdapter {
 
     // 定义一些数据用于填充ExpandableListView
-    private String[] groups = {""};
+    private String[] groups;
     private String[][] children = { {""} };
 
     public MyAdapter() {
-        ResultData resultData = MainActivity.list.get(0);
-        groups[0] = resultData.name;
-        children[0][0] = resultData.description;
-
-    }
-
-    public MyAdapter(String s) {
-        groups[2] = s;
+        int n = MainActivity.list.size();
+        groups = new String[n];
+        children = new String[n][1];
+        for(int i=0;i<n;i++){
+            ResultData resultData = MainActivity.list.get(i);
+            groups[i] = resultData.name;
+            children[i][0] = resultData.description;
+        }
     }
 
     @Override

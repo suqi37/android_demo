@@ -19,6 +19,7 @@
         </TextView>
 
         <LinearLayout
+            android:id="@+id/ocrResult"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_below="@id/emptyText"
@@ -37,9 +38,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentBottom="true">
-
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ocrResult"
+            >
 
 
             <LinearLayout
@@ -55,33 +56,30 @@
                     android:onClick="btn_back_click"
                     >
                 </Button>
-
                 <Button
-                    android:id="@+id/btn_insert"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="插入"
-                    android:onClick="btn_insert_click"
-                    >
-                </Button>
-
-                <Button
-                    android:id="@+id/btn_query"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="查询"
-                    android:onClick="btn_query_click"
-                    >
-                </Button>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="查询2"
                     android:onClick="btn_searchName_click"
                     >
                 </Button>
+<!--                <Button-->
+<!--                    android:id="@+id/btn_insert"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="插入"-->
+<!--                    android:onClick="btn_insert_click"-->
+<!--                    >-->
+<!--                </Button>-->
 
+<!--                <Button-->
+<!--                    android:id="@+id/btn_query"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="查询"-->
+<!--                    android:onClick="btn_query_click"-->
+<!--                    >-->
+<!--                </Button>-->
             </LinearLayout>
 
 
