@@ -10,26 +10,34 @@
         android:layout_height="match_parent"
 
         >
-        <TextView
-            android:id="@+id/emptyText"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:backgroundTint="@android:color/transparent"
-            >
-        </TextView>
-
+       <RelativeLayout
+           android:id="@+id/secondBackLayout"
+           android:layout_width="match_parent"
+           android:layout_height="70dp"
+           android:gravity="center_vertical"
+           >
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/btn_back"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="返回"
+               android:textColor="@color/white"
+               app:rippleColor="@color/colorAccent"
+               android:onClick="btn_back_click"
+               >
+           </com.google.android.material.button.MaterialButton>
+       </RelativeLayout>
         <LinearLayout
             android:id="@+id/ocrResult"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_below="@id/emptyText"
+            android:layout_below="@id/secondBackLayout"
             >
 
             <EditText
                 android:id="@+id/SecondEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#B7E8F5"
                 android:minHeight="48dp"></EditText>
 
         </LinearLayout>
@@ -38,7 +46,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/ocrResult"
             >
 
@@ -47,32 +55,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
-                <Button
-                    android:id="@+id/btn_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="返回"
-                    android:onClick="btn_back_click"
-                    >
-                </Button>
+<!--                <Button-->
+<!--                    android:id="@+id/btn_back"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="返回"-->
+<!--                    android:onClick="btn_back_click"-->
+<!--                    >-->
+<!--                </Button>-->
+<!--                <Button-->
+<!--                    android:id="@+id/btn_query_second"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="查询"-->
+<!--                    android:onClick="btn_searchName_click"-->
+<!--                    >-->
+<!--                </Button>-->
 
-                <Button
-                    android:id="@+id/btn_query_second"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="查询"
-                    android:onClick="btn_searchName_click"
-                    >
-                </Button>
+
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/my_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Click Me!"
+                    android:id="@+id/btn_query_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="分析成分"
                     android:textColor="@color/white"
-                    app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
-
+                    app:rippleColor="@color/colorAccent"
+                    android:onClick="btn_searchName_click"
+                    >
+                </com.google.android.material.button.MaterialButton>
 
                 <!--                <Button-->
 <!--                    android:id="@+id/btn_insert"-->
