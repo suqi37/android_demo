@@ -9,9 +9,6 @@ import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 public class ShowResultActivity extends AppCompatActivity {
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +20,5 @@ public class ShowResultActivity extends AppCompatActivity {
         ExpandableListView expandableListView = findViewById(R.id.expandableListView);
         MyAdapter adapter = new MyAdapter();
         expandableListView.setAdapter(adapter);
-
-
-
     }
 }

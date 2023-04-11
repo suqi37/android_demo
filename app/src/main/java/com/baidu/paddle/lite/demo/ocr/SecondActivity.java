@@ -38,6 +38,9 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
         editText = findViewById(R.id.SecondEditText);
         resultDataList = new ArrayList<ResultData>();
 
+        dbHelper = new DatabaseHelper(SecondActivity.this);
+        db = dbHelper.getWritableDatabase();
+
         //        获取intent传来的值
         Intent lastIntent = getIntent();
         editText.setText(lastIntent.getStringExtra("data"));
@@ -47,15 +50,10 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
         startService(intent);
         // 绑定 service
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-
-
-
-
     }
 
     public void btn_insert_click(View view) {
-        db.execSQL("INSERT INTO dataTable (name,description) VALUES ('白砂糖', '糖类,为人体提供日常活动所需的营养物质')");
-
+        db.execSQL("INSERT INTO dataTable (id,name,description) VALUES (1,'白砂糖', '糖类,为人体提供日常活动所需的营养物质')");
     }
 
     public void btn_back_click(View view) {

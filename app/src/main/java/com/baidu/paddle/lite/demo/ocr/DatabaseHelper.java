@@ -12,14 +12,17 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "dataTable.db";
     public static final int DATABASE_VERSION = 1;
-
+    String TAG = "suqi";
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS dataTable (name TEXT,description TEXT )");
+        Log.e(TAG, "database onCreate: ok");
+        db.execSQL("DROP TABLE IF EXISTS dataTable");
+        Log.e(TAG, "onUpgrade: ok" );
+        db.execSQL("CREATE TABLE IF NOT EXISTS dataTable (id INTEGER,name TEXT,description TEXT )");
     }
 
     public List<ResultData> getAllData() {
@@ -56,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ResultData resultData = new ResultData();
             resultData.name = cursor.getString(cursor.getColumnIndex("name"));
             resultData.description = cursor.getString(cursor.getColumnIndex("description"));
+//            Log.e(TAG,  cursor.getInt(cursor.getColumnIndex("id"))+resultData.name+resultData.description);
             resultDataList.add(resultData);
         }
         cursor.close();
@@ -69,6 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS dataTable");
+        Log.e(TAG, "onUpgrade: ok" );
         onCreate(db);
     }
 }
