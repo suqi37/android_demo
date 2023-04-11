@@ -30,6 +30,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,6 +45,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected Button searchButton;
     protected ImageView ivInputImage;
-    public static EditText inputText;
+    public static SearchView inputText;
 
     // Model settings of ocr
     protected String modelPath = "";
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
     protected String imagePath = "";
     protected int cpuThreadNum = 1;
     protected String cpuPowerMode = "";
+    protected String inputStringText = "";
     protected int detLongSize = 960;
     protected float scoreThreshold = 0.1f;
     private String currentPhotoPath;
@@ -119,23 +122,71 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(MainActivity.this);
         db = dbHelper.getWritableDatabase();
         list = new ArrayList<ResultData>();
-        searchButton = findViewById(R.id.btn_search_first);
+//        searchButton = findViewById(R.id.btn_search_first);
         ivInputImage = findViewById(R.id.iv_input_image);
         inputText = findViewById(R.id.search_input_text);
 
-        inputText.setOnKeyListener(new View.OnKeyListener() {
+
+
+// 设置SearchView控件的属性
+        inputText.setFocusable(false); // 不获取焦点
+        inputText.setIconified(true); // 默认为true时即不展开
+
+// 获取SearchView所在的布局实例
+        View container = findViewById(R.id.main_layout);
+
+// 为布局添加OnTouchListener监听器
+        container.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
-                    // Todo: 处理回车键按下事件
-                    btn_first_search_click(searchButton);
-                    return true;
-                }
+            public boolean onTouch(View v, MotionEvent event) {
+                // 当用户点击布局以外的区域时执行
+                // 使SearchView失去焦点
+                inputText.clearFocus();
+                // 显示搜索框中的叉号
+                inputText.findViewById(R.id.search_close_btn).setVisibility(View.VISIBLE);
                 return false;
             }
         });
 
 
+
+//        inputText.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+//                    // Todo: 处理回车键按下事件
+//                    btn_first_search_click(searchButton);
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+
+        inputText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // 当用户提交搜索查询时执行，query参数为搜索框中的文本内容
+//                Log.e(TAG, "onQueryTextSubmit: " + query);
+                if(query.isEmpty()){
+
+                Log.e(TAG, "input empty");
+                    Toast.makeText(MainActivity.this, "输入内容不能为空!!!", Toast.LENGTH_SHORT).show();
+                }else{
+                    inputStringText = query;
+                    btn_first_search_click();
+                }
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // 当搜索框文本更改时执行，newText参数为搜索框中的最新文本内容
+//                Log.e(TAG, "onQueryTextChange: " + newText);
+
+                return false;
+            }
+        });
 
 //        inputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 //            @Override
@@ -298,8 +349,6 @@ public class MainActivity extends AppCompatActivity {
         pbLoadModel = ProgressDialog.show(this, "", "loading model...", false, false);
         sender.sendEmptyMessage(REQUEST_LOAD_MODEL);
     }
-
-
 
     public boolean onLoadModel() {
         if (predictor.isLoaded()) {
@@ -536,10 +585,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void btn_reset_img_click(View view) {
-        ivInputImage.setImageBitmap(cur_predict_image);
-    }
-
     public void btn_run_model_click(View view) {
         Bitmap image = ((BitmapDrawable) ivInputImage.getDrawable()).getBitmap();
         if (image == null) {
@@ -557,7 +602,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void btn_first_search_click(View view){
+    public void btn_first_search_click(){
         pbSearchData = ProgressDialog.show(this, "", "正在查询......", false, false);
         sender.sendEmptyMessage(REQUEST_SEARCH);
     }
@@ -571,7 +616,7 @@ public class MainActivity extends AppCompatActivity {
         }
         list.clear();
         try {
-            list = dbHelper.getByName(inputText.getText().toString().split("、"));
+            list = dbHelper.getByName(inputStringText.split("、"));
         }catch (Exception e){
             return false;
         }

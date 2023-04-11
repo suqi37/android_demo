@@ -24,13 +24,13 @@
             android:layout_height="300dp"
             android:layout_below="@id/emptyText"
             >
+
             <EditText
                 android:id="@+id/SecondEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#B7E8F5"
-                >
-            </EditText>
+                android:minHeight="48dp"></EditText>
 
         </LinearLayout>
 
@@ -41,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ocrResult"
             >
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,6 +55,7 @@
                     android:onClick="btn_back_click"
                     >
                 </Button>
+
                 <Button
                     android:id="@+id/btn_query_second"
                     android:layout_width="wrap_content"
@@ -64,7 +64,17 @@
                     android:onClick="btn_searchName_click"
                     >
                 </Button>
-<!--                <Button-->
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/my_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click Me!"
+                    android:textColor="@color/white"
+                    app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
+
+
+                <!--                <Button-->
 <!--                    android:id="@+id/btn_insert"-->
 <!--                    android:layout_width="wrap_content"-->
 <!--                    android:layout_height="wrap_content"-->
@@ -73,14 +83,6 @@
 <!--                    >-->
 <!--                </Button>-->
 
-<!--                <Button-->
-<!--                    android:id="@+id/btn_query"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="查询"-->
-<!--                    android:onClick="btn_query_click"-->
-<!--                    >-->
-<!--                </Button>-->
             </LinearLayout>
 
 
