@@ -11,9 +11,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -26,8 +30,8 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
     SQLiteDatabase db;
     String TAG = "suqi";
     List<ResultData> resultDataList;
-
     private SearchService mService;
+    Button queryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
         setContentView(R.layout.activity_second);
         editText = findViewById(R.id.SecondEditText);
         resultDataList = new ArrayList<ResultData>();
+        queryButton = findViewById(R.id.btn_query_second);
 
         dbHelper = new DatabaseHelper(SecondActivity.this);
         db = dbHelper.getWritableDatabase();
@@ -50,6 +55,41 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
         startService(intent);
         // 绑定 service
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
+
+
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    // Todo: 处理回车键按下事件
+                    btn_searchName_click(queryButton);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+//        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+////                    btn_searchName_click(queryButton);
+//                    Log.e(TAG, "second listener called");
+//                    try {
+//                        mService.getByName(editText.getText().toString());
+//                    }catch (Exception e){
+//                        Log.e(TAG, e.toString() );
+//                    }
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+
+
+
+
     }
 
     public void btn_insert_click(View view) {
@@ -69,7 +109,7 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
     }
 
     public void btn_searchName_click(View view) {
-        Log.e(TAG, "btn_searchName_click: "+editText.getText().toString());
+//        Log.e(TAG, "btn_searchName_click: "+editText.getText().toString());
         try {
             mService.getByName(editText.getText().toString());
         }catch (Exception e){
@@ -92,13 +132,13 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
 
     @Override
     public void onDataReceived(List<ResultData> resultDataList) {
-        MainActivity.list = resultDataList;
-        Intent intent = new Intent(SecondActivity.this, ShowResultActivity.class);
-        startActivity(intent);
-//        for(ResultData resultData: resultDataList){
-//            Log.e(TAG, "onDataReceived: "+resultData. name);
-//            Log.e(TAG, "onDataReceived: "+resultData.description);
-//        }
+        if(resultDataList.size() == 0){
+            Toast.makeText(SecondActivity.this,"无匹配结果！",Toast.LENGTH_SHORT);
+        }else{
+            MainActivity.list = resultDataList;
+            Intent intent = new Intent(SecondActivity.this, ShowResultActivity.class);
+            startActivity(intent);
+        }
     }
 
     private ServiceConnection mConnection = new ServiceConnection() {

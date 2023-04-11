@@ -26,12 +26,15 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -78,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     protected Handler sender = null; // Send command to worker thread
     protected HandlerThread worker = null; // Worker thread to load&run model&search
 
-
+    protected Button searchButton;
     protected ImageView ivInputImage;
     public static EditText inputText;
 
@@ -110,15 +113,44 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        Log.e(TAG, "onCreate: ");
+//        Log.e(TAG, "onCreate: ");
         Utils.setWindowWhite(this);
 
         dbHelper = new DatabaseHelper(MainActivity.this);
         db = dbHelper.getWritableDatabase();
         list = new ArrayList<ResultData>();
-
+        searchButton = findViewById(R.id.btn_search_first);
         ivInputImage = findViewById(R.id.iv_input_image);
         inputText = findViewById(R.id.search_input_text);
+
+        inputText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    // Todo: 处理回车键按下事件
+                    btn_first_search_click(searchButton);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+
+//        inputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+////                    btn_first_search_click(searchButton);
+//                    pbSearchData = ProgressDialog.show(MainActivity.this, "", "正在查询......", false, false);
+//                    sender.sendEmptyMessage(REQUEST_SEARCH);
+//                    Log.e(TAG, "first listener called");
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+
 
 
         receiver = new Handler() {
@@ -528,7 +560,6 @@ public class MainActivity extends AppCompatActivity {
     public void btn_first_search_click(View view){
         pbSearchData = ProgressDialog.show(this, "", "正在查询......", false, false);
         sender.sendEmptyMessage(REQUEST_SEARCH);
-
     }
 
     //查询操作
@@ -544,20 +575,22 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             return false;
         }
-
-        if(list.isEmpty()){
-            return false;
+        if(list.size() == 0){
+            return  false;
         }else{
             return true;
         }
     }
 
     public void onSearchSuccessed() {
-        Intent intent = new Intent(MainActivity.this, ShowResultActivity.class);
-        startActivity(intent);
+        if(list.size() != 0){
+            Intent intent = new Intent(MainActivity.this, ShowResultActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void onSearchFailed() {
+
     }
 
 
