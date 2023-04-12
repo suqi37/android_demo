@@ -59,14 +59,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ResultData resultData = new ResultData();
             resultData.name = cursor.getString(cursor.getColumnIndex("name"));
             resultData.description = cursor.getString(cursor.getColumnIndex("description"));
-//            Log.e(TAG,  cursor.getInt(cursor.getColumnIndex("id"))+resultData.name+resultData.description);
             resultDataList.add(resultData);
         }
         cursor.close();
-//        try {
-//            Thread.sleep(20000);
-//        }catch (Exception e){
-//        }
+
         return resultDataList;
     }
 

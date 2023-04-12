@@ -38,6 +38,7 @@
             android:layout_below="@+id/secondBackLayout"
             android:gravity="center_horizontal"
             app:counterEnabled="true"
+            android:background="@color/colorBackground"
             app:counterMaxLength="100">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -46,6 +47,8 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_edit_text_bg"
                 android:gravity="top|left"
+                android:textColor="@color/black"
+                app:rippleColor="@color/black"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +72,7 @@
                     android:onClick="btn_searchName_click"
                     android:text="@string/btn_search"
                     android:textColor="@color/colorButtonText"
-                    app:cornerRadius="100dp"
+                    app:cornerRadius="15dp"
                     app:icon="@drawable/analysis"
                     app:iconGravity="textStart"
                     app:iconSize="24dp"

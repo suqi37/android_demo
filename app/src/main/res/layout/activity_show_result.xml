@@ -37,7 +37,9 @@
             android:layout_height="600dp"
             android:layout_below="@id/showResultFirstLayout"
             android:layout_marginTop="0dp"
-            android:divider="@color/divider_color"></ExpandableListView>
+            android:listSelector="@color/colorPrimary"
+
+            ></ExpandableListView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

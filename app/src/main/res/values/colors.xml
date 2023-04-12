@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#F3B140</color>
+    <color name="colorPrimaryDark">#F3B140</color>
     <color name="colorAccent">#D81B60</color>
     <color name="white">#ffffff</color>
     <color name="colorBackground">#EFF0F2</color>
     <color name="colorButton">#F3B140</color>
     <color name="colorButtonText">#ffffff</color>
     <color name="divider_color">#FFEB3B</color>
+    <color name="black">#000000</color>
+
     <color name="group_view_text_color">#3E1F29</color>
     <color name="child_view_text_color">#2B5271</color>
     <color name="group_background_color">#E67F7F</color>
     <color name="child_background_color">#0CE0FF</color>
 </resources>
+<!--<color name="group_view_text_color">#3E1F29</color>-->
+<!--<color name="child_view_text_color">#2B5271</color>-->
+<!--<color name="group_background_color">#E67F7F</color>-->
+<!--<color name="child_background_color">#0CE0FF</color>-->
