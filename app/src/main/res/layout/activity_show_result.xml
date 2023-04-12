@@ -8,20 +8,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackground"
         >
         <RelativeLayout
             android:id="@+id/showResultFirstLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
+            android:gravity="center_vertical"
             >
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_back_third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="返回"
+                android:textColor="@color/white"
+                app:rippleColor="@color/colorAccent"
+                android:onClick="btn_back_click"
+                >
+            </com.google.android.material.button.MaterialButton>
         </RelativeLayout>
-<!--        <ListView-->
-<!--            android:id="@+id/listView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="500dp"-->
-<!--            android:layout_below="@id/showResultFirstLayout"-->
-<!--            >-->
-<!--        </ListView>-->
         <ExpandableListView
             android:id="@+id/expandableListView"
             android:layout_width="match_parent"
@@ -30,3 +35,18 @@
         </ExpandableListView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--        <RelativeLayout-->
+    <!--            android:id="@+id/showResultFirstLayout"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            >-->
+    <!--        </RelativeLayout>-->
+
+    <!--        <ListView-->
+    <!--            android:id="@+id/listView"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="500dp"-->
+    <!--            android:layout_below="@id/showResultFirstLayout"-->
+    <!--            >-->
+    <!--        </ListView>-->
