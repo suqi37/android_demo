@@ -9,6 +9,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
     </style>
+
     <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>
     </style>
@@ -31,7 +32,7 @@
         <item name="backgroundTint">@color/colorPrimary</item>
         <item name="rippleColor">@color/white</item>
         <item name="iconTintMode">src_atop</item>
-        <item name="iconTint">@color/white</item>
+        <item name="iconTint">#FFFFFF</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">0dp</item>
     </style>

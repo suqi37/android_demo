@@ -1,6 +1,7 @@
 package com.baidu.paddle.lite.demo.ocr;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,8 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
     List<ResultData> resultDataList;
     private SearchService mService;
     Button queryButton;
+    Button backButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +46,16 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
         editText = findViewById(R.id.SecondEditText);
         resultDataList = new ArrayList<ResultData>();
         queryButton = findViewById(R.id.btn_query_second);
-
+        backButton = findViewById(R.id.btn_back);
         dbHelper = new DatabaseHelper(SecondActivity.this);
         db = dbHelper.getWritableDatabase();
 
         //        获取intent传来的值
         Intent lastIntent = getIntent();
         editText.setText(lastIntent.getStringExtra("data"));
+
+//        ImageView searchHintIcon = backButton.findViewById(androidx.appcompat.R.id.icon);
+//        searchHintIcon.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
 
 
         Intent intent = new Intent(this, SearchService.class);
@@ -93,6 +100,7 @@ public class SecondActivity extends AppCompatActivity  implements SearchService.
     }
 
     public void btn_insert_click(View view) {
+        db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (1, '白砂糖', '糖类,人体活动主要的供能物质')");
         db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (2, '乳化剂', '能够使水和油混合的化学物质。常用于奶油、冰淇淋、沙拉酱等产品中。')");
         db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (3, '防腐剂', '能够抑制细菌和真菌的生长。常用于肉类制品、果汁、面包等产品中。')");
         db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (4, '甜味剂', '一种人工合成的化学物质，用于增加食品的甜味。常用于食品和饮料中，例如低热量饮料、口香糖等。')");

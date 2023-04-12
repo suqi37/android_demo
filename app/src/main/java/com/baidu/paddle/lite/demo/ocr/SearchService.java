@@ -31,7 +31,6 @@ public class SearchService extends Service {
         sendDataToActivity(mHelper.getByName(selectionArgs));
     }
 
-
     public SearchService() {
     }
 
@@ -42,30 +41,25 @@ public class SearchService extends Service {
         Log.e(TAG, "onCreate: SearchService");
     }
 
-
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
     }
 
-
     // 定义回调接口
     public interface Callback {
         void onDataReceived(List<ResultData> resultDataList);
     }
-
     // 在需要传递数据的时候调用此方法
     public void sendDataToActivity(List<ResultData> resultDataList) {
         if (mCallback != null) {
             mCallback.onDataReceived(resultDataList);
         }
     }
-
     // 注册回调接口
     public void registerCallback(Callback callback) {
         mCallback = callback;
     }
-
     // 取消回调接口的注册
     public void unregisterCallback() {
         mCallback = null;

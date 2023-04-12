@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 
 public class ShowResultActivity extends AppCompatActivity {
     @Override
@@ -24,11 +21,7 @@ public class ShowResultActivity extends AppCompatActivity {
         finish();
     }
 
-
 }
-
-
-
 
 //        listView = findViewById(R.id.listView);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, data);

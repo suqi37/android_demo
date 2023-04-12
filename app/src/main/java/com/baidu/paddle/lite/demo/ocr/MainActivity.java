@@ -1,6 +1,7 @@
 package com.baidu.paddle.lite.demo.ocr;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Bitmap cur_predict_image = null;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +133,12 @@ public class MainActivity extends AppCompatActivity {
 // 设置SearchView控件的属性
         inputText.setFocusable(false); // 不获取焦点
         inputText.setIconified(true); // 默认为true时即不展开
+
+        ImageView searchHintIcon = inputText.findViewById(androidx.appcompat.R.id.search_mag_icon);
+        searchHintIcon.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
+        EditText searchEditText = inputText.findViewById(androidx.appcompat.R.id.search_src_text);
+        searchEditText.setTextColor(R.color.black);
+
 
 // 获取SearchView所在的布局实例
         View container = findViewById(R.id.main_layout);

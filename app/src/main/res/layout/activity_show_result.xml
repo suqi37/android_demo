@@ -21,12 +21,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_back_third"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="60dp"
                 android:onClick="btn_back_click"
                 android:background="@android:color/transparent"
                 app:icon="@drawable/back"
                 app:iconSize="24dp"
+                app:iconTint="@color/colorPrimary"
                 app:rippleColor="@color/colorAccent"
                 ></com.google.android.material.button.MaterialButton>
         </RelativeLayout>

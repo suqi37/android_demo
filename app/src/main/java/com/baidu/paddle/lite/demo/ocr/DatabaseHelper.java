@@ -23,6 +23,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS dataTable");
         Log.e(TAG, "onUpgrade: ok" );
         db.execSQL("CREATE TABLE IF NOT EXISTS dataTable (id INTEGER,name TEXT,description TEXT )");
+        try {
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (1, '白砂糖', '糖类,人体活动主要的供能物质')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (2, '乳化剂', '能够使水和油混合的化学物质。常用于奶油、冰淇淋、沙拉酱等产品中。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (3, '防腐剂', '能够抑制细菌和真菌的生长。常用于肉类制品、果汁、面包等产品中。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (4, '甜味剂', '一种人工合成的化学物质，用于增加食品的甜味。常用于食品和饮料中，例如低热量饮料、口香糖等。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (5, '色素', '用于食品中的人工合成化学物质，用于改变食品的颜色。常用于饼干、糖果、冰淇淋等产品中。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (6, '增稠剂', '一种化学物质，用于增加食品的黏稠度。常用于调味品、沙拉酱、饼干等产品中。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (7, '抗氧化剂', '能够防止食品被氧化和腐败的化学物质。常用于油脂、肉制品、腌渍食品等产品中。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (8, '酸味剂', '用于食品的化学物质，可以增加食品的酸味。常用于饮料、果汁、糖果等产品中。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (9, '发酵剂', '用于加速面团或面粉发酵的化学物质。常用于面包、蛋糕、饼干等产品中。')");
+            db.execSQL("INSERT INTO dataTable (id, name, description) VALUES (10, '香精', '一种合成或天然的化学物质，用于增加或改变食品的味道。常用于肉制品、调味品、烘焙食品等产品中。')");
+
+        }catch (Exception e){
+
+        }
     }
 
     public List<ResultData> getAllData() {
