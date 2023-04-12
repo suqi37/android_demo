@@ -8,6 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#F039404C"
 
         >
        <RelativeLayout
@@ -27,88 +28,86 @@
                >
            </com.google.android.material.button.MaterialButton>
        </RelativeLayout>
-        <LinearLayout
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ocrResult"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_below="@id/secondBackLayout"
+            android:layout_below="@+id/secondBackLayout"
+            android:gravity="center_horizontal"
+            app:counterEnabled="true"
+            app:counterMaxLength="100"
             >
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SecondEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"></EditText>
-
-        </LinearLayout>
-
-
+                android:layout_width="380dp"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:gravity="top|left"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@id/ocrResult"
             >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
-<!--                <Button-->
-<!--                    android:id="@+id/btn_back"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="返回"-->
-<!--                    android:onClick="btn_back_click"-->
-<!--                    >-->
-<!--                </Button>-->
-<!--                <Button-->
-<!--                    android:id="@+id/btn_query_second"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="查询"-->
-<!--                    android:onClick="btn_searchName_click"-->
-<!--                    >-->
-<!--                </Button>-->
-
-
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_query_second"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="btn_searchName_click"
                     android:text="分析成分"
                     android:textColor="@color/white"
-                    app:rippleColor="@color/colorAccent"
-                    android:onClick="btn_searchName_click"
-                    >
-                </com.google.android.material.button.MaterialButton>
-
-                <!--                <Button-->
-<!--                    android:id="@+id/btn_insert"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="插入"-->
-<!--                    android:onClick="btn_insert_click"-->
-<!--                    >-->
-<!--                </Button>-->
-
+                    app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
             </LinearLayout>
-
-
-
         </LinearLayout>
-
-
-
-
-
     </RelativeLayout>
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/ocrResult"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="300dp"-->
+    <!--            android:layout_below="@id/secondBackLayout"-->
+    <!--            >-->
+    <!--            <EditText-->
+    <!--                android:id="@+id/SecondEditText"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:minHeight="48dp"></EditText>-->
+    <!--        </LinearLayout>-->
+    <!--                <Button-->
+    <!--                    android:id="@+id/btn_insert"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="插入"-->
+    <!--                    android:onClick="btn_insert_click"-->
+    <!--                    >-->
+    <!--                </Button>-->
+    <!--                <Button-->
+    <!--                    android:id="@+id/btn_back"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="返回"-->
+    <!--                    android:onClick="btn_back_click"-->
+    <!--                    >-->
+    <!--                </Button>-->
+    <!--                <Button-->
+    <!--                    android:id="@+id/btn_query_second"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="查询"-->
+    <!--                    android:onClick="btn_searchName_click"-->
+    <!--                    >-->
+    <!--                </Button>-->
+
