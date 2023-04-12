@@ -388,6 +388,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //        tvOutputResult.setText(predictor.outputResult());
 //        tvOutputResult.scrollTo(0, 0);
+        ivInputImage.setImageBitmap(cur_predict_image);
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
             intent.putExtra("data", predictor.outputResult());
         startActivity(intent);

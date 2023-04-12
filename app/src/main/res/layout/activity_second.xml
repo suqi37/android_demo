@@ -5,77 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
-        >
-       <RelativeLayout
-           android:id="@+id/secondBackLayout"
-           android:layout_width="match_parent"
-           android:layout_height="70dp"
-           android:gravity="center_vertical"
-           >
-           <com.google.android.material.button.MaterialButton
-               android:id="@+id/btn_back"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:rippleColor="@color/colorAccent"
-               android:onClick="btn_back_click"
-               app:cornerRadius="10dp"
-               app:icon="@drawable/back"
-               android:text="@string/back_btn"
-               android:backgroundTint="@color/colorButton"
-               app:iconSize="24dp"
-               android:textColor="@color/colorButtonText"
-               >
-           </com.google.android.material.button.MaterialButton>
-       </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/secondBackLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_back"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:onClick="btn_back_click"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/back"
+                app:iconSize="24dp"
+                app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
+        </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ocrResult"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="280dp"
             android:layout_below="@+id/secondBackLayout"
             android:gravity="center_horizontal"
             app:counterEnabled="true"
-            app:counterMaxLength="100"
-            >
+            app:counterMaxLength="100">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SecondEditText"
-                android:layout_width="380dp"
+                android:layout_width="340dp"
                 android:layout_height="match_parent"
-                android:inputType="textMultiLine"
+                android:background="@drawable/rounded_edit_text_bg"
                 android:gravity="top|left"
-                />
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@id/ocrResult"
-            >
+            android:layout_marginTop="20dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_query_second"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/colorButton"
                     android:onClick="btn_searchName_click"
                     android:text="@string/btn_search"
                     android:textColor="@color/colorButtonText"
                     app:cornerRadius="100dp"
-                    app:rippleColor="@color/colorAccent"
                     app:icon="@drawable/analysis"
-                    app:iconSize="24dp"
                     app:iconGravity="textStart"
-                    ></com.google.android.material.button.MaterialButton>
+                    app:iconSize="24dp"
+                    app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

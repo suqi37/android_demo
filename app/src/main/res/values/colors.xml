@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="white">#ffffff</color>
-    <color name="colorBackground">#E7EEDF</color>
-    <color name="colorButton">#2DD4EA</color>
+    <color name="colorBackground">#EFF0F2</color>
+    <color name="colorButton">#F3B140</color>
     <color name="colorButtonText">#ffffff</color>
     <color name="divider_color">#FFEB3B</color>
     <color name="group_view_text_color">#3E1F29</color>

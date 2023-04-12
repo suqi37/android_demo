@@ -1,6 +1,7 @@
 package com.baidu.paddle.lite.demo.ocr;
 
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;
@@ -42,9 +43,13 @@ public class MyAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         TextView textView = new TextView(parent.getContext());
         textView.setText(getGroup(groupPosition).toString());
+        // 加粗字体类型
+        Typeface boldTypeface = Typeface.defaultFromStyle(Typeface.BOLD);
+        // 设置字体类型
+        textView.setTypeface(boldTypeface);
         textView.setPadding(100, 30, 20, 30); // 设置父项的文字起始位置
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20); // 设置字体大小
-        textView.setTextColor(R.color.colorAccent);         //字体颜色
+        textView.setTextColor(R.color.colorButtonText);         //字体颜色
 //        textView.setBackgroundColor(R.color.group_background_color);  //背景颜色
         return textView;
     }
@@ -57,9 +62,10 @@ public class MyAdapter extends BaseExpandableListAdapter {
         TextView textView = new TextView(parent.getContext());
         textView.setText(getChild(groupPosition, childPosition).toString());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18); // 设置字体大小
-        textView.setLetterSpacing(0.5f);
+        textView.setLetterSpacing(0.05f);
         textView.setLineSpacing(10f, 1f);
-        textView.setPadding(150, 10, 150, 10); // 设置子项的文字起始位置
+        textView.setTextColor(R.color.colorButton);         //字体颜色
+        textView.setPadding(150, 10, 75, 10); // 设置子项的文字起始位置
 //        textView.setTextColor(R.color.divider_color);         //字体颜色
 //        textView.setBackgroundColor(R.color.child_background_color);    //背景颜色
         return textView;

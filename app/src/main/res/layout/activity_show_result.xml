@@ -23,20 +23,18 @@
                 android:id="@+id/btn_back_third"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorButton"
                 android:onClick="btn_back_click"
-                android:text="@string/back_btn"
+                android:background="@android:color/transparent"
                 app:icon="@drawable/back"
                 app:iconSize="24dp"
-                android:textColor="@color/colorButtonText"
-
-                app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
+                app:rippleColor="@color/colorAccent"
+                ></com.google.android.material.button.MaterialButton>
         </RelativeLayout>
 
         <ExpandableListView
             android:id="@+id/expandableListView"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="600dp"
             android:layout_below="@id/showResultFirstLayout"
             android:layout_marginTop="0dp"
             android:divider="@color/divider_color"></ExpandableListView>

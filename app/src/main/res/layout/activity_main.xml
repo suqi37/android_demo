@@ -30,13 +30,12 @@
             android:gravity="left"
             android:layout_below="@+id/headLinearLayout"
             android:orientation="horizontal">
+
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_input_text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:iconifiedByDefault="false"
-                app:queryHint="Search...">
-            </androidx.appcompat.widget.SearchView>
+                app:iconifiedByDefault="false"></androidx.appcompat.widget.SearchView>
         </RelativeLayout>
 
         <!--图片展示按钮布局-->
@@ -50,7 +49,8 @@
             <ImageView
                 android:id="@+id/iv_input_image"
                 android:layout_width="260dp"
-                android:layout_height="250dp"></ImageView>
+                android:layout_height="250dp"
+                ></ImageView>
 
         </LinearLayout>
 
@@ -61,20 +61,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_view_layout"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:layout_centerHorizontal="true"
             >
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_take_photo"
-                android:layout_width="264dp"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:text="@string/btn_camera"
                 android:elevation="10dp"
                 app:icon="@drawable/camera"
                 app:iconSize="24dp"
                 app:rippleColor="@color/colorAccent"
                 android:onClick="btn_take_photo_click"
-                app:cornerRadius="10dp"
+                app:cornerRadius="15dp"
                 app:iconGravity="textStart"
                 android:backgroundTint="@color/colorButton"
                 android:textColor="@color/colorButtonText"
@@ -88,17 +88,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/camera_layout"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
             >
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_choice_img"
-                android:layout_width="264dp"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:text="@string/btn_photo"
                 app:rippleColor="@color/colorAccent"
                 android:onClick="btn_choice_img_click"
-                app:cornerRadius="10dp"
+                app:cornerRadius="15dp"
                 app:icon="@drawable/photo"
                 app:iconGravity="textStart"
                 app:iconSize="27dp"
@@ -113,13 +113,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/select_image_layout"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
             >
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_analyse"
-                android:layout_width="264dp"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/colorButton"
                 android:onClick="btn_run_model_click"
                 android:text="@string/btn_ocr"
