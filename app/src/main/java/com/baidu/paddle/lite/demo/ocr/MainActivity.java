@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                 // 使SearchView失去焦点
                 inputText.clearFocus();
                 // 显示搜索框中的叉号
-                inputText.findViewById(R.id.search_close_btn).setVisibility(View.VISIBLE);
+//                inputText.findViewById(R.id.search_close_btn).setVisibility(View.VISIBLE);
                 return false;
             }
         });
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        inputText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            inputText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // 当用户提交搜索查询时执行，query参数为搜索框中的文本内容
@@ -389,7 +389,7 @@ public class MainActivity extends AppCompatActivity {
         //        tvOutputResult.setText(predictor.outputResult());
 //        tvOutputResult.scrollTo(0, 0);
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        intent.putExtra("data", predictor.outputResult());
+            intent.putExtra("data", predictor.outputResult());
         startActivity(intent);
     }
 

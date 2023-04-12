@@ -1,5 +1,6 @@
 package com.baidu.paddle.lite.demo.ocr;
 
+import android.annotation.SuppressLint;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,13 +34,31 @@ public class MyAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
+    @SuppressLint("ResourceAsColor")
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        TextView textView = new TextView(parent.getContext());
+        textView.setText(getGroup(groupPosition).toString());
+        textView.setPadding(100, 30, 20, 30); // 设置父项的文字起始位置
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20); // 设置字体大小
+        textView.setTextColor(R.color.colorAccent);         //字体颜色
+//        textView.setBackgroundColor(R.color.group_background_color);  //背景颜色
+        return textView;
+    }
+
+    @SuppressLint("ResourceAsColor")
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView,
                              ViewGroup parent) {
+
+
+
         TextView textView = new TextView(parent.getContext());
         textView.setText(getChild(groupPosition, childPosition).toString());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16); // 设置字体大小
-        textView.setPadding(200, 0, 0, 0); // 设置子项的文字起始位置
+        textView.setPadding(150, 10, 10, 10); // 设置子项的文字起始位置
+//        textView.setTextColor(R.color.divider_color);         //字体颜色
+//        textView.setBackgroundColor(R.color.child_background_color);    //背景颜色
         return textView;
     }
 
@@ -61,15 +80,6 @@ public class MyAdapter extends BaseExpandableListAdapter {
     @Override
     public long getGroupId(int groupPosition) {
         return groupPosition;
-    }
-
-    @Override
-    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        TextView textView = new TextView(parent.getContext());
-        textView.setText(getGroup(groupPosition).toString());
-        textView.setPadding(100, 0, 0, 0); // 设置父项的文字起始位置
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20); // 设置字体大小
-        return textView;
     }
 
     @Override

@@ -21,11 +21,13 @@
                android:id="@+id/btn_back"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="@string/back_btn"
                app:rippleColor="@color/colorAccent"
                android:onClick="btn_back_click"
                app:cornerRadius="10dp"
+               app:icon="@drawable/back"
+               android:text="@string/back_btn"
                android:backgroundTint="@color/colorButton"
+               app:iconSize="24dp"
                android:textColor="@color/colorButtonText"
                >
            </com.google.android.material.button.MaterialButton>
@@ -65,13 +67,16 @@
                     android:id="@+id/btn_query_second"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:backgroundTint="@color/colorButton"
                     android:onClick="btn_searchName_click"
                     android:text="@string/btn_search"
-                    app:rippleColor="@color/colorAccent"
-                    android:backgroundTint="@color/colorButton"
                     android:textColor="@color/colorButtonText"
-                    >
-                </com.google.android.material.button.MaterialButton>
+                    app:cornerRadius="100dp"
+                    app:rippleColor="@color/colorAccent"
+                    app:icon="@drawable/analysis"
+                    app:iconSize="24dp"
+                    app:iconGravity="textStart"
+                    ></com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

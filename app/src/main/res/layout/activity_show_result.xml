@@ -5,35 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShowResultActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        >
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
         <RelativeLayout
             android:id="@+id/showResultFirstLayout"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:gravity="center_vertical"
-            >
+            android:gravity="center_vertical">
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_back_third"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/back_btn"
                 android:backgroundTint="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                app:rippleColor="@color/colorAccent"
                 android:onClick="btn_back_click"
-                >
-            </com.google.android.material.button.MaterialButton>
+                android:text="@string/back_btn"
+                app:icon="@drawable/back"
+                app:iconSize="24dp"
+                android:textColor="@color/colorButtonText"
+
+                app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
         </RelativeLayout>
+
         <ExpandableListView
             android:id="@+id/expandableListView"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_below="@id/showResultFirstLayout">
-        </ExpandableListView>
+            android:layout_height="350dp"
+            android:layout_below="@id/showResultFirstLayout"
+            android:layout_marginTop="0dp"
+            android:divider="@color/divider_color"></ExpandableListView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
