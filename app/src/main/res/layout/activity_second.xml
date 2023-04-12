@@ -42,7 +42,6 @@
             app:counterEnabled="true"
             app:counterMaxLength="100"
             >
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/SecondEditText"
                 android:layout_width="380dp"

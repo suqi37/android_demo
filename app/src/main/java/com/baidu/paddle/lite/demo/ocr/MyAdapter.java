@@ -1,6 +1,9 @@
 package com.baidu.paddle.lite.demo.ocr;
 
 import android.annotation.SuppressLint;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,13 +53,13 @@ public class MyAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView,
                              ViewGroup parent) {
-
-
-
+        String childText = (String) getChild(groupPosition, childPosition);
         TextView textView = new TextView(parent.getContext());
         textView.setText(getChild(groupPosition, childPosition).toString());
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16); // 设置字体大小
-        textView.setPadding(150, 10, 10, 10); // 设置子项的文字起始位置
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18); // 设置字体大小
+        textView.setLetterSpacing(0.5f);
+        textView.setLineSpacing(10f, 1f);
+        textView.setPadding(150, 10, 150, 10); // 设置子项的文字起始位置
 //        textView.setTextColor(R.color.divider_color);         //字体颜色
 //        textView.setBackgroundColor(R.color.child_background_color);    //背景颜色
         return textView;

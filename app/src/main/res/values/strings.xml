@@ -19,7 +19,7 @@
     <string name="back_btn">返回</string>
     <string name="btn_camera">拍照</string>
     <string name="btn_photo">相册</string>
-    <string name="btn_ocr">开始识别</string>
+    <string name="btn_ocr">识别</string>
     <string name="btn_search">分析成分</string>
 
 </resources>

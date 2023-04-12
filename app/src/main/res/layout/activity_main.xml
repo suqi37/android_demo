@@ -20,9 +20,9 @@
             android:layout_height="20dp"
             android:orientation="horizontal"
             >
-
         </LinearLayout>
 
+        <!--搜索框布局-->
         <RelativeLayout
             android:id="@+id/firstLayout"
             android:layout_width="match_parent"
@@ -30,7 +30,6 @@
             android:gravity="left"
             android:layout_below="@+id/headLinearLayout"
             android:orientation="horizontal">
-
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_input_text"
                 android:layout_width="match_parent"
@@ -38,104 +37,101 @@
                 app:iconifiedByDefault="false"
                 app:queryHint="Search...">
             </androidx.appcompat.widget.SearchView>
-
-
-
         </RelativeLayout>
 
+        <!--图片展示按钮布局-->
         <LinearLayout
+            android:id="@+id/image_view_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/firstLayout"
             android:gravity="center_horizontal"
             android:orientation="vertical">
-
             <ImageView
                 android:id="@+id/iv_input_image"
                 android:layout_width="260dp"
                 android:layout_height="250dp"></ImageView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"></LinearLayout>
-            <!--        四个按钮-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_take_photo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_camera"
-                    android:elevation="10dp"
-                    app:icon="@drawable/camera"
-                    app:iconSize="24dp"
-                    app:rippleColor="@color/colorAccent"
-                    android:onClick="btn_take_photo_click"
-                    app:cornerRadius="10dp"
-
-                    android:backgroundTint="@color/colorButton"
-                    android:textColor="@color/colorButtonText"
-                    >
-                </com.google.android.material.button.MaterialButton>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_choice_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/btn_photo"
-                    app:rippleColor="@color/colorAccent"
-                    android:layout_marginLeft="50dp"
-                    android:layout_toRightOf="@id/btn_take_photo"
-                    android:onClick="btn_choice_img_click"
-                    app:cornerRadius="10dp"
-                    app:icon="@drawable/photo"
-                    app:iconSize="27dp"
-                    android:backgroundTint="@color/colorButton"
-                    android:textColor="@color/colorButtonText"
-                    >
-                </com.google.android.material.button.MaterialButton>
-
-
-
-            </RelativeLayout>
-
-
         </LinearLayout>
 
 
+        <!--相机按钮布局-->
         <LinearLayout
+            android:id="@+id/camera_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="150dp"
+            android:layout_below="@+id/image_view_layout"
+            android:layout_marginTop="80dp"
             android:layout_centerHorizontal="true"
             >
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_analyse"
-                android:layout_width="wrap_content"
+                android:id="@+id/btn_take_photo"
+                android:layout_width="264dp"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_ocr"
-                app:rippleColor="@color/colorAccent"
-                android:onClick="btn_run_model_click"
-                app:icon="@drawable/ocr"
+                android:text="@string/btn_camera"
+                android:elevation="10dp"
+                app:icon="@drawable/camera"
                 app:iconSize="24dp"
-                app:cornerRadius="15dp"
+                app:rippleColor="@color/colorAccent"
+                android:onClick="btn_take_photo_click"
+                app:cornerRadius="10dp"
+                app:iconGravity="textStart"
                 android:backgroundTint="@color/colorButton"
                 android:textColor="@color/colorButtonText"
                 >
             </com.google.android.material.button.MaterialButton>
+        </LinearLayout>
 
+        <!--相册按钮布局-->
+        <LinearLayout
+            android:id="@+id/select_image_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/camera_layout"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            >
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_choice_img"
+                android:layout_width="264dp"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_photo"
+                app:rippleColor="@color/colorAccent"
+                android:onClick="btn_choice_img_click"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/photo"
+                app:iconGravity="textStart"
+                app:iconSize="27dp"
+                android:backgroundTint="@color/colorButton"
+                android:textColor="@color/colorButtonText"
+                >
+            </com.google.android.material.button.MaterialButton>
+        </LinearLayout>
 
-
-
+        <!--ocr识别按钮布局-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/select_image_layout"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            >
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_analyse"
+                android:layout_width="264dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorButton"
+                android:onClick="btn_run_model_click"
+                android:text="@string/btn_ocr"
+                android:textColor="@color/colorButtonText"
+                app:cornerRadius="15dp"
+                app:icon="@drawable/ocr"
+                app:iconSize="24dp"
+                app:iconGravity="textStart"
+                app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
         </LinearLayout>
 
     </RelativeLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
