@@ -75,10 +75,14 @@
                     android:id="@+id/btn_take_photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="拍照"
-                    android:textColor="@color/white"
+                    android:text="@string/btn_camera"
+                    android:elevation="10dp"
+                    app:icon="@drawable/camera"
+                    app:iconSize="24dp"
                     app:rippleColor="@color/colorAccent"
                     android:onClick="btn_take_photo_click"
+                    android:backgroundTint="@color/colorButton"
+                    android:textColor="@color/colorButtonText"
                     >
                 </com.google.android.material.button.MaterialButton>
 
@@ -86,12 +90,15 @@
                     android:id="@+id/btn_choice_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="相册"
-                    android:textColor="@color/white"
+                    android:text="@string/btn_photo"
                     app:rippleColor="@color/colorAccent"
                     android:layout_marginLeft="50dp"
                     android:layout_toRightOf="@id/btn_take_photo"
                     android:onClick="btn_choice_img_click"
+                    app:icon="@drawable/photo"
+                    app:iconSize="27dp"
+                    android:backgroundTint="@color/colorButton"
+                    android:textColor="@color/colorButtonText"
                     >
                 </com.google.android.material.button.MaterialButton>
 
@@ -114,10 +121,13 @@
                 android:id="@+id/btn_analyse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="识别"
-                android:textColor="@color/white"
+                android:text="@string/btn_ocr"
                 app:rippleColor="@color/colorAccent"
                 android:onClick="btn_run_model_click"
+                app:icon="@drawable/ocr"
+                app:iconSize="24dp"
+                android:backgroundTint="@color/colorButton"
+                android:textColor="@color/colorButtonText"
                 >
             </com.google.android.material.button.MaterialButton>
 

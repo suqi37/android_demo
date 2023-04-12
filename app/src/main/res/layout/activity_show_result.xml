@@ -20,8 +20,9 @@
                 android:id="@+id/btn_back_third"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="返回"
-                android:textColor="@color/white"
+                android:text="@string/back_btn"
+                android:backgroundTint="@color/colorButton"
+                android:textColor="@color/colorButtonText"
                 app:rippleColor="@color/colorAccent"
                 android:onClick="btn_back_click"
                 >

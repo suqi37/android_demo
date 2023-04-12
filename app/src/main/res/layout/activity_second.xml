@@ -21,10 +21,12 @@
                android:id="@+id/btn_back"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="返回"
-               android:textColor="@color/white"
+               android:text="@string/back_btn"
                app:rippleColor="@color/colorAccent"
                android:onClick="btn_back_click"
+               app:cornerRadius="10dp"
+               android:backgroundTint="@color/colorButton"
+               android:textColor="@color/colorButtonText"
                >
            </com.google.android.material.button.MaterialButton>
        </RelativeLayout>
@@ -64,9 +66,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:onClick="btn_searchName_click"
-                    android:text="分析成分"
-                    android:textColor="@color/white"
-                    app:rippleColor="@color/colorAccent"></com.google.android.material.button.MaterialButton>
+                    android:text="@string/btn_search"
+                    app:rippleColor="@color/colorAccent"
+                    android:backgroundTint="@color/colorButton"
+                    android:textColor="@color/colorButtonText"
+                    >
+                </com.google.android.material.button.MaterialButton>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
