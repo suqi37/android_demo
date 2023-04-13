@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         inputText.setIconified(true); // 默认为true时即不展开
 
         ImageView searchHintIcon = inputText.findViewById(androidx.appcompat.R.id.search_mag_icon);
-        searchHintIcon.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
+            searchHintIcon.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary));
         EditText searchEditText = inputText.findViewById(androidx.appcompat.R.id.search_src_text);
         searchEditText.setTextColor(R.color.black);
 
@@ -285,7 +285,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case REQUEST_SEARCH:
-                        // Run model if model is loaded
                         if (onSearchModel()) {
                             receiver.sendEmptyMessage(RESPONSE_SEARCH_SUCCESSED);
                         } else {
